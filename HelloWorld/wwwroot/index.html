@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    
+  </style>
+  <title>Calorie Tracker</title>
+</head>
+<body>
+
+  <h1>Calorie Tracker</h1>
+  <div>
+    <button id="btnDisplayConsumedFood">Display Consumed Food</button>
+    <button id="btnAddFood">Add Food</button>
+    <button id="btnTotalCalories">Display Total Calories</button>
+  </div>
+
+  <div id="output"></div>
+
+  <script>
+    let foodArray = [];
+
+    document.getElementById('btnDisplayConsumedFood').addEventListener('click', consumedFood);
+    document.getElementById('btnAddFood').addEventListener('click', addFood);
+    document.getElementById('btnTotalCalories').addEventListener('click', totalCalories);
+
+    function consumedFood() {
+      const output = document.getElementById("output");
+      output.innerHTML = "";
+
+      if (foodArray.length === 0) {
+        output.innerHTML = "No food items consumed yet.";
+        return;
+      }
+
+      output.innerHTML += "<strong>Consumed Food:</strong><br>";
+
+      foodArray.forEach(food => {
+        output.innerHTML += `${food.name}, ${food.servingSize} serving(s), ${food.caloriesPerServing} calories per serving<br>`;
+      });
+
+      output.innerHTML += `<strong>Total Calories: ${calculateTotalCalories()}</strong>`;
+    }
+
+    function addFood() {
+      const name = prompt("Enter the name of the food:");
+      const servingSize = parseFloat(prompt("Enter the serving size:"));
+      const caloriesPerServing = parseFloat(prompt("Enter the calories per serving:"));
+
+      if (!name || isNaN(servingSize) || isNaN(caloriesPerServing)) {
+        alert("Invalid input. Please enter valid values for name, serving size, and calories per serving.");
+        return;
+      }
+
+      foodArray.push({
+        name,
+        servingSize,
+        caloriesPerServing
+      });
+      alert(`${name} added to the consumption log.`);
+    }
+
+    function calculateTotalCalories() {
+      return foodArray.reduce((total, food) => total + (food.servingSize * food.caloriesPerServing), 0);
+    }
+
+    function totalCalories() {
+      const output = document.getElementById("output");
+      output.innerHTML = `<strong>Total Calories Consumed: ${calculateTotalCalories()}</strong>`;
+    }
+  </script>
+
+</body>
+</html>

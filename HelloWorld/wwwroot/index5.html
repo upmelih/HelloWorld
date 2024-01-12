@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Change HTML content</title>
+    </head>
+    <body>
+        <p id="chang_cont">JavaScript can change HTML content.</p>
+        <button type="button" onclick='document.getElementById("chang_cont").innerHTML= "Content Changed!"'>
+         Click Me!</button>
+
+         <h2>Change Attribute values</h2>
+         <div id="target" title="box"style="width:100px; height:100px;background:green;color:white"></div>
+         <button onclick="document.getElementById('target').innerHTML='Box A'">Click for A </button>
+         <button onclick="document.getElementById('target').innerHTML='Another Box B'">Click for B </button>
+
+
+         <h2>Change HTML Styles</h2>
+         <p id="demo">JavaScript can change the style of an HTML element.</p>
+         <button type="button" onclick="document.getElementById('demo').style.color='red'">Click Me!</button>
+
+         <button type="button" onclick="document.getElementById('demo').setAttribute('style', 'font-size: 20px; font-style: italic; color: green;');">Click Me!</button>
+
+         <h2>Hide/Show HTML Elements</h2>         
+         <p id="ele">JavaScript can hide/show HTML elements.</p>
+         <button type="button" onclick="document.getElementById('ele').style.display='none'">Hide!</button>
+         <button type="button" onclick="document.getElementById('ele').style.display='block'">Show!</button>
+    </body>
+</html>
+    
